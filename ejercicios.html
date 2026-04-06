@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios - Intensivo 8</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/exercises.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="img/logo-clm.png" alt="Logo CLM" class="logo-clm">
+                <div class="header-info">
+                    <h1>Ejercicios Interactivos</h1>
+                    <p>Intensivo 8 - Español Nivel C1</p>
+                </div>
+            </div>
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="materiales.html">Materiales</a></li>
+                <li><a href="ejercicios.html" class="active">Ejercicios</a></li>
+                <li><a href="tareas.html">Tareas</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="exercises-intro">
+                <h2>Ejercicios del Curso</h2>
+                <p>Practica con los contenidos de las Unidades 5 y 6. Los ejercicios con autocorrección te darán feedback inmediato, mientras que otros serán revisados por la profesora.</p>
+
+                <div class="exercise-types">
+                    <div class="type-card auto-correct">
+                        <div class="type-icon">✅</div>
+                        <h3>Autocorrección</h3>
+                        <p>Feedback inmediato</p>
+                    </div>
+                    <div class="type-card teacher-review">
+                        <div class="type-icon">👩‍🏫</div>
+                        <h3>Revisión Profesora</h3>
+                        <p>Feedback personalizado</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EJERCICIOS DE GRAMÁTICA -->
+            <section id="gramatica" class="exercise-section">
+                <h2>📝 Ejercicios de Gramática</h2>
+
+                <!-- Ejercicio 1: Modo Indicativo vs Subjuntivo -->
+                <div class="exercise-card" id="ejercicio1">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 1: Modo Indicativo vs Subjuntivo</h3>
+                        <span class="exercise-tag auto">✅ Autocorrección</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">Completa las oraciones con el modo verbal adecuado (indicativo o subjuntivo):</p>
+
+                        <div class="exercise-questions">
+                            <div class="question" data-correct="quiere">
+                                <label>1. María (querer) que tú (venir) mañana.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: quiere">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="venga">
+                                <label>2. Es necesario que Juan (venir) a la reunión.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: venga">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="creo">
+                                <label>3. Yo (creer) que María (ser) muy inteligente.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: creo">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="es">
+                                <label>4. No (creer, yo) que eso (ser) verdad.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: sea">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="llegue">
+                                <label>5. Espero que tú (llegar) a tiempo.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: llegue">
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+
+                        <button class="btn check-btn" onclick="checkExercise('ejercicio1')">Verificar Respuestas</button>
+                        <button class="btn btn-secondary reset-btn" onclick="resetExercise('ejercicio1')">Reiniciar</button>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 2: Artículos y Determinantes -->
+                <div class="exercise-card" id="ejercicio2">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 2: Artículos y Determinantes</h3>
+                        <span class="exercise-tag auto">✅ Autocorrección</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">Completa con el artículo o determinante adecuado:</p>
+
+                        <div class="exercise-questions">
+                            <div class="question" data-correct="El">
+                                <label>1. (El/La) idiota de tu hermano me llamó ayer.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: El">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="la">
+                                <label>2. Me dijo (un/una) de cosas increíbles.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: una">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="El">
+                                <label>3. ¡ (El/La) de problemas que tiene!</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: La">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="un">
+                                <label>4. Es (un/una) maravilla de coche.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: un">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="Lo">
+                                <label>5. (El/La/Lo) han declarado parque natural.</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: Lo">
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+
+                        <button class="btn check-btn" onclick="checkExercise('ejercicio2')">Verificar Respuestas</button>
+                        <button class="btn btn-secondary reset-btn" onclick="resetExercise('ejercicio2')">Reiniciar</button>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 3: Pronombres Relativos -->
+                <div class="exercise-card" id="ejercicio3">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 3: Pronombres Relativos</h3>
+                        <span class="exercise-tag review">👩‍🏫 Revisión Profesora</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">Une las oraciones usando el pronombre relativo adecuado:</p>
+
+                        <div class="exercise-textareas">
+                            <div class="text-question">
+                                <label>1. El profesor / me dio buenas recomendaciones</label>
+                                <textarea class="answer-textarea" rows="2" placeholder="Escribe la oración completa..."></textarea>
+                            </div>
+
+                            <div class="text-question">
+                                <label>2. El libro / me prestaste es muy interesante</label>
+                                <textarea class="answer-textarea" rows="2" placeholder="Escribe la oración completa..."></textarea>
+                            </div>
+
+                            <div class="text-question">
+                                <label>3. La casa / nací está en Granada</label>
+                                <textarea class="answer-textarea" rows="2" placeholder="Escribe la oración completo..."></textarea>
+                            </div>
+                        </div>
+
+                        <button class="btn" onclick="submitForReview('ejercicio3', 'pronombres')">Enviar para Revisión</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EJERCICIOS DE VOCABULARIO -->
+            <section id="vocabulario" class="exercise-section">
+                <h2>🔤 Ejercicios de Vocabulario</h2>
+
+                <!-- Ejercicio 4: Prefijos -->
+                <div class="exercise-card" id="ejercicio4">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 4: Formación de Palabras con Prefijos</h3>
+                        <span class="exercise-tag auto">✅ Autocorrección</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">Añade el prefijo adecuado para formar el antónimo:</p>
+
+                        <div class="exercise-questions">
+                            <div class="question" data-correct="imposible">
+                                <label>1. Posible → (Prefijo) + posible</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: imposible">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="infeliz">
+                                <label>2. Feliz → (Prefijo) + feliz</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: infeliz">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="deshacer">
+                                <label>3. Hacer → (Prefijo) + hacer</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: deshacer">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="antinatural">
+                                <label>4. Natural → (Prefijo) + natural</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: antinatural">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="irregular">
+                                <label>5. Regular → (Prefijo) + regular</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: irregular">
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+
+                        <button class="btn check-btn" onclick="checkExercise('ejercicio4')">Verificar Respuestas</button>
+                        <button class="btn btn-secondary reset-btn" onclick="resetExercise('ejercicio4')">Reiniciar</button>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 5: Vocabulario de Animales -->
+                <div class="exercise-card" id="ejercicio5">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 5: Expresiones con Animales</h3>
+                        <span class="exercise-tag auto">✅ Autocorrección</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">Completa las expresiones con el animal adecuado:</p>
+
+                        <div class="exercise-questions">
+                            <div class="question" data-correct="caballo">
+                                <label>1. Ser un _____ de batalla (trabajar mucho)</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: caballo">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="lagarto">
+                                <label>2. Tener más _____ que un gato (tener mucha vida/energía)</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: lagarto">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="liebre">
+                                <label>3. Ser más rápido que una _____ (muy rápido)</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: liebre">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="zorro">
+                                <label>4. Ser un _____ (ser astuto)</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: zorro">
+                                <div class="feedback"></div>
+                            </div>
+
+                            <div class="question" data-correct="oso">
+                                <label>5. Ser un _____ (tener mala idea o estar enfadado)</label>
+                                <input type="text" class="answer-input" placeholder="Escribe: oso">
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+
+                        <button class="btn check-btn" onclick="checkExercise('ejercicio5')">Verificar Respuestas</button>
+                        <button class="btn btn-secondary reset-btn" onclick="resetExercise('ejercicio5')">Reiniciar</button>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 6: Vocabulario Académico -->
+                <div class="exercise-card" id="ejercicio6">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 6: Sustitución de Verbos Generales</h3>
+                        <span class="exercise-tag review">👩‍🏫 Revisión Profesora</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">Sustituye los verbos generales (hacer, tener, poner, decir) por verbos más precisos:</p>
+
+                        <div class="exercise-textareas">
+                            <div class="text-question">
+                                <label>1. El profesor _____ una explicación clara (hacer → verbo preciso)</label>
+                                <textarea class="answer-textarea" rows="2" placeholder="Escribe la oración con el verbo preciso..."></textarea>
+                            </div>
+
+                            <div class="text-question">
+                                <label>2. María _____ una opinión diferente (tener → verbo preciso)</label>
+                                <textarea class="answer-textarea" rows="2" placeholder="Escribe la oración con el verbo preciso..."></textarea>
+                            </div>
+
+                            <div class="text-question">
+                                <label>3. El gobierno _____ nuevas medidas (poner → verbo preciso)</label>
+                                <textarea class="answer-textarea" rows="2" placeholder="Escribe la oración con el verbo preciso..."></textarea>
+                            </div>
+                        </div>
+
+                        <button class="btn" onclick="submitForReview('ejercicio6', 'vocabulario')">Enviar para Revisión</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EJERCICIOS DE REDACCIÓN -->
+            <section id="redaccion" class="exercise-section">
+                <h2>✍️ Ejercicios de Redacción</h2>
+
+                <div class="exercise-card" id="ejercicio7">
+                    <div class="exercise-header">
+                        <h3>Ejercicio 7: Redacción Argumentativa</h3>
+                        <span class="exercise-tag review">👩‍🏫 Revisión Profesora</span>
+                    </div>
+                    <div class="exercise-body">
+                        <p class="exercise-instruction">
+                            Escribe una redacción argumentativa de 150-200 palabras sobre el tema:
+                            "¿Deben prohibirse los zoos en todo el mundo?"
+                        </p>
+                        <div class="writing-requirements">
+                            <h4>Requisitos:</h4>
+                            <ul>
+                                <li>Usa conectores argumentativos (por lo tanto, sin embargo, por otro lado...)</li>
+                                <li>Incluye expresiones de opinión personal (en mi opinión, creo que...)</li>
+                                <li>Utiliza vocabulario preciso y variado</li>
+                                <li>Emplea estructuras gramaticales variadas</li>
+                            </ul>
+                        </div>
+                        <textarea class="redaccion-textarea" rows="12" placeholder="Escribe tu redacción aquí..."></textarea>
+
+                        <div class="word-count">
+                            <span id="wordCount">0</span> palabras
+                        </div>
+
+                        <button class="btn" onclick="submitEssay('ejercicio7')">Enviar Redacción</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Centro de Lenguas Modernas - Universidad de Granada</p>
+            <p>Curso Intensivo 8 - Español Nivel C1 (Superior)</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/sessions.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/exercises.js"></script>
+</body>
+</html>

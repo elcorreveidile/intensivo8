@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario - Intensivo 8</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calendar.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="img/logo-clm.png" alt="Logo CLM" class="logo-clm">
+                <div class="header-info">
+                    <h1>Calendario del Curso</h1>
+                    <p>Intensivo 8 - Español Nivel C1</p>
+                </div>
+            </div>
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html" class="active">Calendario</a></li>
+                <li><a href="materiales.html">Materiales</a></li>
+                <li><a href="ejercicios.html">Ejercicios</a></li>
+                <li><a href="tareas.html">Tareas</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="calendar-section">
+                <h2>Calendario de Sesiones</h2>
+
+                <div id="current-session-clock" class="session-clock-container">
+                    <!-- Se generará dinámicamente -->
+                </div>
+
+                <div class="calendar-legend">
+                    <h3>Leyenda</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color today"></div>
+                            <span>Hoy</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color has-session"></div>
+                            <span>Sesión programada</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color practice-day"></div>
+                            <span>Día de clase disponible</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color weekend"></div>
+                            <span>Fin de semana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calendar-container">
+                    <!-- Se generará el calendario dinámicamente -->
+                </div>
+
+                <div class="sessions-list">
+                    <h3>Lista de Sesiones</h3>
+                    <div id="sessions-container">
+                        <!-- Se generarán las tarjetas de sesión dinámicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="calendar-info">
+                <h2>Información del Calendario</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>📅 Fechas del curso</h4>
+                        <p>7 de abril - 30 de abril de 2026</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>⏰ Duración sesión</h4>
+                        <p>2 horas por sesión</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📚 Total sesiones</h4>
+                        <p>14 sesiones</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🎓 Examen final</h4>
+                        <p>30 de abril de 2026</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📝 Días de clase</h4>
+                        <p>Lunes a Jueves (sin viernes)</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>👥 Alumnos</h4>
+                        <p>10 estudiantes</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal para detalles de sesión -->
+    <div id="session-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="session-modal-content">
+                <!-- Contenido del modal -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Centro de Lenguas Modernas - Universidad de Granada</p>
+            <p>Curso Intensivo 8 - Español Nivel C1 (Superior)</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/sessions.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Generar lista de sesiones
+        document.addEventListener('DOMContentLoaded', function() {
+            const sessionsContainer = document.getElementById('sessions-container');
+            if (sessionsContainer) {
+                let sessionsHTML = '';
+                SESSIONS.forEach(session => {
+                    sessionsHTML += generateSessionCard(session);
+                });
+                sessionsContainer.innerHTML = sessionsHTML;
+            }
+
+            // Inicializar calendario
+            initializeCalendar();
+
+            // Mostrar reloj de sesión
+            updateCurrentSessionClock();
+        });
+    </script>
+</body>
+</html>

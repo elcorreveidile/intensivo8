@@ -1,0 +1,33 @@
+# Archivos y carpetas a ignorar
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Editores y IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+
+# Dependencias de Node (si se agregan en el futuro)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de configuración local
+.env
+.env.local
+
+# Archivos PDF grandes (opcional, comentar si se quieren subir)
+# pdfs/*.pdf
+
+# Archivos generados
+dist/
+build/

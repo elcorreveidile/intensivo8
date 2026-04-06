@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas - Intensivo 8</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/tasks.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="img/logo-clm.png" alt="Logo CLM" class="logo-clm">
+                <div class="header-info">
+                    <h1>Gestión de Tareas</h1>
+                    <p>Intensivo 8 - Español Nivel C1</p>
+                </div>
+            </div>
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="materiales.html">Materiales</a></li>
+                <li><a href="ejercicios.html">Ejercicios</a></li>
+                <li><a href="tareas.html" class="active">Tareas</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Pestañas de navegación -->
+            <div class="task-tabs">
+                <button class="task-tab-btn active" data-tab="student">📝 Alumnos</button>
+                <button class="task-tab-btn" data-tab="teacher">👩‍🏫 Profesora</button>
+            </div>
+
+            <!-- SECCIÓN DE ALUMNOS -->
+            <section id="student" class="task-tab-content active">
+                <h2>Entrega de Tareas</h2>
+                <p>Usa este formulario para enviar tus tareas a la profesora María Agustina García García.</p>
+
+                <div class="task-form-container">
+                    <form id="taskSubmissionForm" class="task-form">
+                        <div class="form-group">
+                            <label for="studentName">Nombre completo *</label>
+                            <input type="text" id="studentName" name="studentName" required
+                                   placeholder="Tu nombre y apellidos">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentEmail">Email *</label>
+                            <input type="email" id="studentEmail" name="studentEmail" required
+                                   placeholder="tu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sessionSelect">Sesión correspondiente *</label>
+                            <select id="sessionSelect" name="sessionId" required>
+                                <option value="">Selecciona una sesión...</option>
+                                <!-- Se llenará dinámicamente -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskType">Tipo de tarea *</label>
+                            <select id="taskType" name="taskType" required>
+                                <option value="">Selecciona el tipo de tarea...</option>
+                                <option value="homework">Tarea para casa</option>
+                                <option value="classwork">Actividad de clase</option>
+                                <option value="essay">Redacción</option>
+                                <option value="project">Proyecto grupal</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskTitle">Título de la tarea *</label>
+                            <input type="text" id="taskTitle" name="taskTitle" required
+                                   placeholder="Ej: Ejercicios de pronombres relativos">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskDescription">Descripción de la tarea</label>
+                            <textarea id="taskDescription" name="taskDescription" rows="4"
+                                      placeholder="Describe brevemente la tarea que estás entregando..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskContent">Contenido de la tarea *</label>
+                            <textarea id="taskContent" name="taskContent" rows="8" required
+                                      placeholder="Escribe aquí el contenido de tu tarea o copia el texto..."></textarea>
+                            <small>Mínimo 50 caracteres</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalComments">Comentarios adicionales</label>
+                            <textarea id="additionalComments" name="additionalComments" rows="3"
+                                      placeholder="¿Alguna duda o comentario para la profesora?"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">📧 Enviar Tarea</button>
+                            <button type="reset" class="btn btn-secondary">🔄 Limpiar Formulario</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Tareas entregadas -->
+                <div class="submitted-tasks">
+                    <h3>Mis Tareas Entregadas</h3>
+                    <div id="submittedTasksList" class="tasks-list">
+                        <p class="no-tasks">No has entregado ninguna tarea todavía.</p>
+                    </div>
+                </div>
+
+                <!-- Instrucciones -->
+                <div class="task-instructions">
+                    <h3>📋 Instrucciones para la entrega de tareas</h3>
+                    <ul>
+                        <li>✅ Completa todos los campos obligatorios (marcados con *)</li>
+                        <li>✅ Selecciona la sesión correspondiente a la tarea</li>
+                        <li>✅ Escribe un título descriptivo para identificar tu tarea</li>
+                        <li>✅ Incluye el contenido completo de la tarea en el campo correspondiente</li>
+                        <li>✅ Revisa tu tarea antes de enviarla</li>
+                        <li>✅ Al hacer clic en "Enviar Tarea", se generará un email automático a la profesora</li>
+                        <li>✅ Recibirás una confirmación cuando la profesora revise tu tarea</li>
+                    </ul>
+                </div>
+
+                <!-- Información de contacto -->
+                <div class="contact-info">
+                    <h3>📧 Información de Contacto</h3>
+                    <p><strong>Profesora:</strong> María Agustina García García</p>
+                    <p><strong>Email:</strong> <a href="mailto:agustinagg@yahoo.es">agustinagg@yahoo.es</a></p>
+                    <p><strong>Horario de tutorías:</strong> Consultar en clase</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE LA PROFESORA -->
+            <section id="teacher" class="task-tab-content">
+                <h2>Panel de la Profesora</h2>
+                <p>Gestiona y corrige las tareas entregadas por los alumnos.</p>
+
+                <!-- Resumen -->
+                <div class="teacher-dashboard">
+                    <div class="dashboard-stat">
+                        <div class="stat-number" id="totalTasks">0</div>
+                        <div class="stat-label">Tareas Recibidas</div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="stat-number" id="pendingTasks">0</div>
+                        <div class="stat-label">Pendientes de Revisión</div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="stat-number" id="reviewedTasks">0</div>
+                        <div class="stat-label">Revisadas</div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="stat-number" id="averageRating">-</div>
+                        <div class="stat-label">Nota Media</div>
+                    </div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="task-filters">
+                    <h3>Filtrar Tareas</h3>
+                    <div class="filter-controls">
+                        <select id="filterStatus">
+                            <option value="all">Todas las tareas</option>
+                            <option value="pending">Pendientes de revisión</option>
+                            <option value="reviewed">Revisadas</option>
+                        </select>
+
+                        <select id="filterSession">
+                            <option value="all">Todas las sesiones</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+
+                        <input type="text" id="filterStudent" placeholder="Filtrar por alumno...">
+                    </div>
+                </div>
+
+                <!-- Lista de tareas para revisar -->
+                <div class="tasks-review">
+                    <h3>Tareas para Revisar</h3>
+                    <div id="teacherTasksList" class="teacher-tasks-list">
+                        <!-- Se llenará dinámicamente -->
+                        <p class="no-tasks">No hay tareas entregadas todavía.</p>
+                    </div>
+                </div>
+
+                <!-- Herramientas de la profesora -->
+                <div class="teacher-tools">
+                    <h3>Herramientas</h3>
+                    <div class="tools-grid">
+                        <button class="tool-btn" onclick="exportAllTasks()">
+                            <div class="tool-icon">📥</div>
+                            <div class="tool-name">Exportar Todo</div>
+                            <div class="tool-desc">Descargar todas las tareas</div>
+                        </button>
+
+                        <button class="tool-btn" onclick="generateReport()">
+                            <div class="tool-icon">📊</div>
+                            <div class="tool-name">Generar Reporte</div>
+                            <div class="tool-desc">Informe de progreso</div>
+                        </button>
+
+                        <button class="tool-btn" onclick="sendBulkReminder()">
+                            <div class="tool-icon">📧</div>
+                            <div class="tool-name">Enviar Recordatorios</div>
+                            <div class="tool-desc">Recordar tareas pendientes</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de revisión de tarea -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content review-modal">
+            <span class="close-modal">&times;</span>
+            <div id="reviewModalContent">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Centro de Lenguas Modernas - Universidad de Granada</p>
+            <p>Curso Intensivo 8 - Español Nivel C1 (Superior)</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/sessions.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tasks.js"></script>
+</body>
+</html>
