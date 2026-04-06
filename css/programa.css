@@ -1,0 +1,253 @@
+/* ============================================================
+   Programación de Aula – estilos de tarjetas de sesión
+   ============================================================ */
+
+/* Intro / subtítulo de página */
+.program-intro {
+    padding: 1rem 0 1.25rem 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Lista de tarjetas */
+.sessions-program-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 2.5rem;
+}
+
+/* ── Tarjeta base ── */
+.program-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.program-card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Tarjeta de examen – fondo rosa suave */
+.card-exam {
+    background: #fff1f2;
+}
+
+/* Tarjeta de hoy – borde naranja */
+.card-today {
+    border: 2px solid var(--primary-color);
+}
+
+/* Próxima sesión – borde verde suave */
+.card-next {
+    border-left: 4px solid var(--accent-color);
+}
+
+/* ── Cabecera clicable ── */
+.program-card-header {
+    padding: 1.2rem 3rem 1rem 1.25rem;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+/* Fila de badges */
+.card-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Badge genérico */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* Sesión X → azul */
+.badge-session {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+/* Repaso → violeta */
+.badge-review {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+/* Examen → rojo */
+.badge-exam {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* HOY → naranja pulsante */
+.badge-hoy {
+    background: var(--primary-color);
+    color: #ffffff;
+    animation: pulse-badge 2s infinite;
+}
+
+/* Completada → borde gris, texto gris */
+.badge-completada {
+    background: transparent;
+    border: 1.5px solid #9ca3af;
+    color: #6b7280;
+}
+
+.check-icon {
+    color: #27ae60;
+}
+
+/* Título */
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+}
+
+/* Unidad / bloque */
+.card-unit {
+    font-size: 0.88rem;
+    color: #6b7280;
+    margin-bottom: 0.35rem;
+}
+
+/* Fecha */
+.card-date {
+    font-size: 0.86rem;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.date-icon {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Flecha expand/collapse */
+.expand-icon {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.1rem;
+    font-size: 0.7rem;
+    color: #9ca3af;
+    transition: transform 0.25s ease;
+    line-height: 1;
+}
+
+.expand-icon.expanded {
+    transform: rotate(180deg);
+}
+
+/* ── Detalle expandible ── */
+.program-card-detail {
+    border-top: 1px solid #f0f0f0;
+    padding: 0 1.25rem 1.4rem 1.25rem;
+    animation: fadeSlideDown 0.22s ease;
+}
+
+@keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Sección dentro del detalle */
+.detail-section {
+    margin-top: 1.1rem;
+}
+
+.detail-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 0.55rem;
+}
+
+/* Lista de ítems */
+.detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-list li {
+    padding: 0.3rem 0 0.3rem 1.25rem;
+    position: relative;
+    font-size: 0.88rem;
+    color: #4b5563;
+    line-height: 1.45;
+}
+
+.detail-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0.2rem;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.card-exam .detail-list li::before {
+    color: #ef4444;
+}
+
+.card-review .detail-list li::before {
+    color: #7c3aed;
+}
+
+/* Sección de tarea para casa – fondo ámbar */
+.detail-homework {
+    background: #fffbeb;
+    border-left: 3px solid #f59e0b;
+    padding: 0.85rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin-top: 1.1rem;
+}
+
+.detail-homework .detail-title {
+    color: #92400e;
+    margin-bottom: 0.4rem;
+}
+
+.detail-homework p {
+    font-size: 0.88rem;
+    color: #78350f;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ── Animaciones ── */
+@keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.75; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .program-card-header {
+        padding: 1rem 2.8rem 0.9rem 1rem;
+    }
+
+    .card-title {
+        font-size: 1.05rem;
+    }
+
+    .program-card-detail {
+        padding: 0 1rem 1.2rem 1rem;
+    }
+}
