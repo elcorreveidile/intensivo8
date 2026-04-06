@@ -255,8 +255,6 @@ En la sección "Recursos" encontrarás enlaces a:
 
 Para problemas o dudas:
 - 👩‍🏫 **Profesora:** agustinagg@yahoo.es
-- 🏛️ **CLM:** clm@ugr.es
-- 📧 **Soporte técnico:** Consultar con el departamento de informática del CLM
 
 ## 📄 Licencia
 
