@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación de Aula - Intensivo 8</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/programa.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="img/logo-clm.png" alt="Logo CLM" class="logo-clm">
+                <div class="header-info">
+                    <h1>Programación de Aula</h1>
+                    <p>Intensivo 8 – Español Nivel C1</p>
+                </div>
+            </div>
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="programacion.html" class="active">Programación</a></li>
+                <li><a href="materiales.html">Materiales</a></li>
+                <li><a href="ejercicios.html">Ejercicios</a></li>
+                <li><a href="tareas.html">Tareas</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+
+            <p class="program-intro">
+                Consulta aquí la programación detallada de cada sesión: actividades de aula,
+                contenidos gramaticales y tarea para casa. Pulsa sobre cualquier sesión para
+                ver el detalle.
+            </p>
+
+            <div id="sessions-program-list" class="sessions-program-list">
+                <!-- Se genera dinámicamente -->
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Centro de Lenguas Modernas – Universidad de Granada</p>
+            <p>Curso Intensivo 8 – Español Nivel C1 (Superior)</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/sessions.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            renderProgramList();
+        });
+
+        /* ── Helpers de badge ── */
+
+        function getSessionLabel(session) {
+            if (session.focusArea === 'exam') {
+                return { text: 'Examen', cls: 'badge-exam' };
+            }
+            if (session.focusArea === 'review') {
+                return { text: 'Repaso', cls: 'badge-review' };
+            }
+            return { text: 'Sesión\u00a0' + session.id, cls: 'badge-session' };
+        }
+
+        function getStatusBadge(session) {
+            const status = getSessionStatus(session.date);
+            if (status === 'today') {
+                return '<span class="badge badge-hoy">HOY</span>';
+            }
+            if (status === 'completed') {
+                return '<span class="badge badge-completada"><span class="check-icon">✓</span> Completada</span>';
+            }
+            return '';
+        }
+
+        function formatSessionDate(date) {
+            const options = {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            };
+            const str = date.toLocaleDateString('es-ES', options);
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        /* Quita el prefijo "Sesión N: " del título */
+        function cleanTitle(session) {
+            if (session.focusArea === 'exam') {
+                return session.title;
+            }
+            return session.title.replace(/^Sesi\u00f3n\s+\d+:\s*/, '');
+        }
+
+        /* ── Renderizado principal ── */
+
+        function renderProgramList() {
+            const container = document.getElementById('sessions-program-list');
+            const nextSession = getNextSession();
+            let html = '';
+
+            SESSIONS.forEach(function (session) {
+                const label      = getSessionLabel(session);
+                const statusBadge = getStatusBadge(session);
+                const status     = getSessionStatus(session.date);
+                const isExam     = session.focusArea === 'exam';
+                const isReview   = session.focusArea === 'review';
+                const isNext     = nextSession && session.id === nextSession.id;
+
+                let cardClasses = 'program-card';
+                if (isExam)              cardClasses += ' card-exam';
+                if (isReview)            cardClasses += ' card-review';
+                if (status === 'today')  cardClasses += ' card-today';
+                else if (isNext)         cardClasses += ' card-next';
+
+                const activitiesHTML = session.classActivities
+                    .map(function (a) { return '<li>' + a + '</li>'; })
+                    .join('');
+
+                const topicsHTML = session.topics
+                    .map(function (t) { return '<li>' + t + '</li>'; })
+                    .join('');
+
+                const materialsHTML = session.materials
+                    .map(function (m) { return '<li>' + m + '</li>'; })
+                    .join('');
+
+                const hasHomework = session.homework && session.homework !== 'N/A';
+
+                html += '<div class="' + cardClasses + '" data-session-id="' + session.id + '">\n';
+                html += '  <div class="program-card-header" onclick="toggleSession(' + session.id + ')">\n';
+                html += '    <div class="card-badges">\n';
+                html += '      <span class="badge ' + label.cls + '">' + label.text + '</span>\n';
+                html += '      ' + statusBadge + '\n';
+                html += '    </div>\n';
+                html += '    <h2 class="card-title">' + cleanTitle(session) + '</h2>\n';
+                html += '    <p class="card-unit">' + session.unit + '</p>\n';
+                html += '    <p class="card-date"><span class="date-icon">📅</span>' + formatSessionDate(session.date) + '</p>\n';
+                html += '    <div class="expand-icon" id="expand-icon-' + session.id + '">▼</div>\n';
+                html += '  </div>\n';
+
+                html += '  <div class="program-card-detail" id="detail-' + session.id + '" style="display:none">\n';
+
+                /* Actividades en el aula */
+                html += '    <div class="detail-section">\n';
+                html += '      <h3 class="detail-title">🎯 Actividades en el aula</h3>\n';
+                html += '      <ul class="detail-list">' + activitiesHTML + '</ul>\n';
+                html += '    </div>\n';
+
+                /* Contenidos / temas */
+                html += '    <div class="detail-section">\n';
+                html += '      <h3 class="detail-title">📖 Contenidos gramaticales y léxicos</h3>\n';
+                html += '      <ul class="detail-list">' + topicsHTML + '</ul>\n';
+                html += '    </div>\n';
+
+                /* Materiales */
+                html += '    <div class="detail-section">\n';
+                html += '      <h3 class="detail-title">📚 Materiales</h3>\n';
+                html += '      <ul class="detail-list">' + materialsHTML + '</ul>\n';
+                html += '    </div>\n';
+
+                /* Tarea para casa */
+                if (hasHomework) {
+                    html += '    <div class="detail-section detail-homework">\n';
+                    html += '      <h3 class="detail-title">🏠 Tarea para casa</h3>\n';
+                    html += '      <p>' + session.homework + '</p>\n';
+                    html += '    </div>\n';
+                }
+
+                html += '  </div>\n'; /* .program-card-detail */
+                html += '</div>\n';   /* .program-card */
+            });
+
+            container.innerHTML = html;
+
+            /* Abrir automáticamente la próxima sesión (o la de hoy) */
+            if (nextSession) {
+                toggleSession(nextSession.id);
+            }
+        }
+
+        /* ── Toggle expand/collapse ── */
+
+        function toggleSession(sessionId) {
+            var detail = document.getElementById('detail-' + sessionId);
+            var icon   = document.getElementById('expand-icon-' + sessionId);
+            if (!detail) return;
+
+            if (detail.style.display === 'none') {
+                detail.style.display = 'block';
+                icon.textContent = '▲';
+                icon.classList.add('expanded');
+            } else {
+                detail.style.display = 'none';
+                icon.textContent = '▼';
+                icon.classList.remove('expanded');
+            }
+        }
+    </script>
+
+</body>
+</html>
